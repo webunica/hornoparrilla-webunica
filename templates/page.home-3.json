@@ -1,0 +1,257 @@
+{
+  "sections": {
+    "slideshow-v27": {
+      "type": "slideshow-v2",
+      "blocks": {
+        "70786295-40d7-4d22-800d-bc4f083a8795": {
+          "type": "slideshow",
+          "settings": {
+            "title": "MAKE A KITGREEN KITCHEN",
+            "title_font_size": 5,
+            "title_font_weight": 700,
+            "title_animation": "zoom-out",
+            "description": "Get cooking with pro tools",
+            "description_font_size": 2,
+            "description_font_weight": 300,
+            "description_animation": "zoom-out",
+            "button_text": "shop now",
+            "button_link": "shopify://collections/all",
+            "button_mode": "dark",
+            "button_style": "secondary",
+            "button_size": "sm",
+            "button_radius": 0,
+            "button_padding": 1.4,
+            "button_animation": "zoom-out",
+            "color_scheme": "inverse",
+            "background_type": "image",
+            "background_color": "",
+            "background_gradient": "",
+            "background_image_desktop": "shopify://shop_images/slideshow-v3-img1.jpg",
+            "background_image_mobile": "shopify://shop_images/slideshow-v3-img1.jpg",
+            "use_parallax": false,
+            "background_image_animation": "zoom-out",
+            "background_video_url": "",
+            "background_video_animation": "none",
+            "background_overlay": "",
+            "background_margin": 0
+          }
+        },
+        "slideshow_kPxA8G": {
+          "type": "slideshow",
+          "settings": {
+            "title": "MAKE A KITGREEN KITCHEN",
+            "title_font_size": 5,
+            "title_font_weight": 700,
+            "title_animation": "zoom-out",
+            "description": "Get cooking with pro tools",
+            "description_font_size": 2,
+            "description_font_weight": 300,
+            "description_animation": "zoom-out",
+            "button_text": "shop now",
+            "button_link": "shopify://collections/all",
+            "button_mode": "dark",
+            "button_style": "secondary",
+            "button_size": "sm",
+            "button_radius": 0,
+            "button_padding": 1.4,
+            "button_animation": "zoom-out",
+            "color_scheme": "inverse",
+            "background_type": "image",
+            "background_color": "",
+            "background_gradient": "",
+            "background_image_desktop": "shopify://shop_images/slideshow-v3-img2.jpg",
+            "background_image_mobile": "shopify://shop_images/slideshow-v3-img2.jpg",
+            "use_parallax": false,
+            "background_image_animation": "zoom-out",
+            "background_video_url": "",
+            "background_video_animation": "none",
+            "background_overlay": "",
+            "background_margin": 0
+          }
+        }
+      },
+      "block_order": [
+        "70786295-40d7-4d22-800d-bc4f083a8795",
+        "slideshow_kPxA8G"
+      ],
+      "settings": {
+        "width": "fullwidth",
+        "fullwidth_margin": 0,
+        "section_height_desktop": 760,
+        "section_height_mobile": 500,
+        "carousel_type": "none",
+        "changing_speed": 400,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "show_navigation": true,
+        "show_pagination": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "policy_v2_MpJdUH": {
+      "type": "policy-v2",
+      "blocks": {
+        "policy_tQ9JFq": {
+          "type": "policy",
+          "settings": {
+            "svg": "",
+            "image_svg": "shopify://shop_images/service-img1.png",
+            "title": "Free Shipping",
+            "subtitle": "Free shipping all order",
+            "background_color": "#ffffff"
+          }
+        },
+        "policy_ciUzap": {
+          "type": "policy",
+          "settings": {
+            "svg": "",
+            "image_svg": "shopify://shop_images/service-img2.png",
+            "title": "Money Return",
+            "subtitle": "30 days for free return",
+            "background_color": "#ffffff"
+          }
+        },
+        "policy_yB3bzR": {
+          "type": "policy",
+          "settings": {
+            "svg": "",
+            "image_svg": "shopify://shop_images/service-img3.png",
+            "title": "Online Support",
+            "subtitle": "Support 24 hours a day",
+            "background_color": "#ffffff"
+          }
+        },
+        "policy_8P4dFJ": {
+          "type": "policy",
+          "settings": {
+            "svg": "",
+            "image_svg": "shopify://shop_images/service-img4.png",
+            "title": "Deals & Promotions",
+            "subtitle": "Price savings, discounts",
+            "background_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "policy_tQ9JFq",
+        "policy_ciUzap",
+        "policy_yB3bzR",
+        "policy_8P4dFJ"
+      ],
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "gap": 80,
+        "limit": 4,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "product_v1_9fpLen": {
+      "type": "product-v1",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "subtitle": "",
+        "title": "TRENDING",
+        "collection": "product-card-style-02",
+        "limit": 12,
+        "columns_size": 4,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "banner_v10_Pw9EA8": {
+      "type": "banner-v2",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "hover": "scale_up",
+        "gap": 30,
+        "title1": "Cook Storage",
+        "subtitle1": "Kitchen Tool",
+        "image1": "shopify://shop_images/banner-v2-img1.jpg",
+        "link1": "shopify://collections/all",
+        "button1_text": "shop now",
+        "button1_mode": "dark",
+        "button1_style": "secondary",
+        "button1_size": "sm",
+        "button1_radius": 0,
+        "button1_padding": 1.4,
+        "title2": "Kitchen Pan Set",
+        "subtitle2": "Stylish Cookware",
+        "image2": "shopify://shop_images/banner-v2-img2.jpg",
+        "link2": "shopify://collections/all",
+        "button2_text": "shop now",
+        "button2_mode": "dark",
+        "button2_style": "secondary",
+        "button2_size": "sm",
+        "button2_radius": 0,
+        "button2_padding": 1.4,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "instagram_v2_imFDdK": {
+      "type": "instagram-v2",
+      "settings": {
+        "width": "fullwidth",
+        "fullwidth_margin": 0,
+        "icon_heading": "",
+        "icon_image": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 448 512\"><path d=\"M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z\"></path></svg>",
+        "title": "instagram.shop",
+        "access_token": "",
+        "open_mode": "newtab",
+        "limit": 5,
+        "auto_play": false,
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "slideshow-v27",
+    "policy_v2_MpJdUH",
+    "product_v1_9fpLen",
+    "banner_v10_Pw9EA8",
+    "instagram_v2_imFDdK"
+  ]
+}
