@@ -114,6 +114,33 @@
         "padding_bottom": 50
       }
     },
+    "product_v1_V4whci": {
+      "type": "product-v1",
+      "name": "t:sections.product_v1.presets.name",
+      "settings": {
+        "width": "box",
+        "fullwidth_margin": 0,
+        "subtitle": "FODEN COLLECTIONS",
+        "title": "FEATURED PRODUCTS",
+        "collection": "parrillas",
+        "limit": 8,
+        "columns_size": 4,
+        "distinct_color_scheme": false,
+        "product_card_color_scheme": "",
+        "color_scheme": "",
+        "background_type": "color",
+        "background_color": "",
+        "background_gradient": "",
+        "use_parallax": true,
+        "background_image_animation": "none",
+        "background_video_url": "",
+        "background_video_animation": "none",
+        "background_overlay": "",
+        "background_margin": 0,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
     "product_v3_RqjbwB": {
       "type": "product-v3",
       "settings": {
@@ -245,6 +272,7 @@
   "order": [
     "banner-v129",
     "brand_v2_GnNgn8",
+    "product_v1_V4whci",
     "product_v3_RqjbwB",
     "banner_v207_43QyFX",
     "product_v3_WFGdja",
