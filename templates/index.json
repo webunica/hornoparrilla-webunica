@@ -94,6 +94,7 @@
         "brand_w8tYeR",
         "brand_hj9P6A"
       ],
+      "disabled": true,
       "settings": {
         "width": "box",
         "fullwidth_margin": 0,
@@ -121,7 +122,7 @@
         "reverse_layout": false,
         "heading_title": "solo para ti",
         "heading_subtitle": "Los estilos que más te gustan. Este mes. Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.",
-        "collection": "box-container",
+        "collection": "cuchillos",
         "collection1": "list-view",
         "limit": 12,
         "columns_size": 2,
