@@ -177,6 +177,35 @@
               show_dynamic_checkout: block.settings.show_dynamic_checkout,
               show_checkbox: block.settings.show_checkbox
             %}
+
+            {%- comment -%} Stock urgency — shown when inventory is low {%- endcomment -%}
+            {%- assign inventory_qty = product.selected_or_first_available_variant.inventory_quantity -%}
+            {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' and inventory_qty > 0 and inventory_qty < 6 -%}
+              <p class="cro-stock-urgency" role="alert" aria-live="polite">
+                {%- render 'icon', name: 'fire', icon_size: '14' -%}
+                ¡Solo quedan <strong>{{ inventory_qty }}</strong> unidades disponibles!
+              </p>
+              <style>
+                .cro-stock-urgency {
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  font-size: 0.85rem;
+                  font-weight: 600;
+                  color: #e53935;
+                  margin-top: 8px;
+                  animation: cro-pulse 2s infinite;
+                }
+                @keyframes cro-pulse {
+                  0%, 100% { opacity: 1; }
+                  50% { opacity: 0.7; }
+                }
+              </style>
+            {%- endif -%}
+
+            {%- if settings.trust_badges_enabled -%}
+              {% render 'cro-trust-badges' %}
+            {%- endif -%}
           </xo-animate>
 
         {% when 'buy_othersite' %}

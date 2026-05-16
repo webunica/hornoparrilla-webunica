@@ -8,7 +8,7 @@
     dir='ltr'
   {% endif %}
   class='no-js'
-  lang='{{ request.locale.iso_code }}'
+  lang='es-CL'
   xo-money-format='{{ shop.money_format | escape }}'
   xo-money-with-currency-format='{{ shop.money_with_currency_format | escape }}'
 >
@@ -16,7 +16,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
-    <meta name='theme-color' content=''>
+    <meta name='theme-color' content='#0E1111'>
     <link rel='canonical' href='{{ canonical_url }}'>
     {% render 'preconnect' %}
 
@@ -37,6 +37,7 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+    {% render 'seo-breadcrumb-schema' %}
 
     {{ content_for_header }}
     {% render 'settings-adapter' %}
@@ -195,6 +196,7 @@
         <li id='a11y-new-window-message'>{{ 'accessibility.link_messages.new_window' | t }}</li>
       </ul>
 
+      {% render 'cro-whatsapp-float' %}
       {% render 'scroll-top' %}
       {% render 'toolbar' %}
     </div>

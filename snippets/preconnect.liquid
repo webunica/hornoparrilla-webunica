@@ -1,10 +1,24 @@
-<link rel='preconnect' href='https://cdn.shopify.com' crossorigin>
+{% comment %}
+  Resource hints — preconnect + dns-prefetch (fallback for older browsers).
+  Order matters: most critical origins first.
+{% endcomment %}
+
+{{- 'https://cdn.shopify.com' | preconnect_tag -}}
+<link rel="dns-prefetch" href="https://cdn.shopify.com">
 
 {% if settings.font_heading_selection == 'shopify_fonts' or settings.font_body_selection == 'shopify_fonts' or settings.font_custom_selection == 'shopify_fonts' %}
-  <link rel='preconnect' href='https://fonts.shopifycdn.com' crossorigin>
+  {{- 'https://fonts.shopifycdn.com' | preconnect_tag -}}
+  <link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
 {% endif %}
 
 {% if settings.font_heading_selection != 'shopify_fonts' or settings.font_body_selection != 'shopify_fonts' or settings.font_custom_selection != 'shopify_fonts' %}
-  <link rel='preconnect' href='https://fonts.googleapis.com'>
-  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  {{- 'https://fonts.googleapis.com' | preconnect_tag -}}
+  {{- 'https://fonts.gstatic.com' | preconnect_tag: crossorigin: true -}}
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 {% endif %}
+
+{% comment %} Analytics + payment providers common in Chile {% endcomment %}
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://http2.mlstatic.com">

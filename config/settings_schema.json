@@ -1905,5 +1905,43 @@
         "info": "t:settings_schema.favicon.settings.favicon.info"
       }
     ]
+  },
+  {
+    "name": "WhatsApp & CRO",
+    "settings": [
+      {
+        "type": "header",
+        "content": "WhatsApp Flotante"
+      },
+      {
+        "type": "checkbox",
+        "id": "whatsapp_enabled",
+        "label": "Mostrar botón WhatsApp",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_phone",
+        "label": "Número WhatsApp (sin +)",
+        "info": "Ejemplo: 56912345678 (Chile)",
+        "default": "56912345678"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_message",
+        "label": "Mensaje pre-cargado",
+        "default": "Hola, me interesa un producto de HornoParrilla.com"
+      },
+      {
+        "type": "header",
+        "content": "Trust Badges en Producto"
+      },
+      {
+        "type": "checkbox",
+        "id": "trust_badges_enabled",
+        "label": "Mostrar trust badges en ficha de producto",
+        "default": true
+      }
+    ]
   }
 ]

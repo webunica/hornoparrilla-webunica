@@ -1,39 +1,51 @@
-<script type='application/ld+json'>
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
-  }
-</script>
-
-{%- if request.page_type == 'index' -%}
-  {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
-  <script type='application/ld+json'>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
+      "@type": "Organization",
+      "@id": "{{ shop.url }}/#organization",
       "name": {{ shop.name | json }},
+      "url": {{ shop.url | json }},
+      {% if settings.logo %}
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }}
+      },
+      {% endif %}
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "areaServed": "CL",
+        "availableLanguage": "es"
+      },
+      "sameAs": [
+        {{ settings.social_facebook_link | json }},
+        {{ settings.social_instagram_link | json }},
+        {{ settings.social_youtube_link | json }},
+        {{ settings.social_twitter_link | json }},
+        {{ settings.social_pinterest_link | json }},
+        {{ settings.social_tiktok_link | json }}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ shop.url }}/#website",
+      "url": {{ shop.url | json }},
+      "name": {{ shop.name | json }},
+      "inLanguage": "es-CL",
+      "publisher": {
+        "@id": "{{ shop.url }}/#organization"
+      },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": {{ potential_action_target | json }},
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"
+        },
         "query-input": "required name=search_term_string"
-      },
-      "url": {{ request.origin | append: page.url | json }}
+      }
     }
-  </script>
-{%- endif -%}
+  ]
+}
+</script>

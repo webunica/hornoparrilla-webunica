@@ -1,20 +1,23 @@
+{% comment %}
+  Google Fonts — non-blocking async load pattern.
+  Using rel=preload + onload avoids render-blocking resources (Lighthouse audit: "Eliminate render-blocking resources").
+  noscript fallback ensures fonts load when JS is disabled.
+{% endcomment %}
+
 {% if settings.font_heading_selection != 'shopify_fonts' %}
-  <link
-    href='https://fonts.googleapis.com/css2?family={{ settings.font_heading_selection | replace: ' ', '+' }}:wght@{{settings.font_heading_weight}}&display=swap'
-    rel='stylesheet'
-  >
+  {%- assign heading_font_url = 'https://fonts.googleapis.com/css2?family=' | append: settings.font_heading_selection | replace: ' ', '+' | append: ':wght@' | append: settings.font_heading_weight | append: '&display=swap' -%}
+  <link rel="preload" as="style" href="{{ heading_font_url }}" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ heading_font_url }}"></noscript>
 {% endif %}
 
 {% if settings.font_body_selection != 'shopify_fonts' %}
-  <link
-    href='https://fonts.googleapis.com/css2?family={{ settings.font_body_selection  | replace: ' ', '+' }}:wght@{{settings.font_body_weight}}&display=swap'
-    rel='stylesheet'
-  >
+  {%- assign body_font_url = 'https://fonts.googleapis.com/css2?family=' | append: settings.font_body_selection | replace: ' ', '+' | append: ':wght@' | append: settings.font_body_weight | append: '&display=swap' -%}
+  <link rel="preload" as="style" href="{{ body_font_url }}" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ body_font_url }}"></noscript>
 {% endif %}
 
 {% if settings.font_custom_selection != 'shopify_fonts' %}
-  <link
-    href='https://fonts.googleapis.com/css2?family={{ settings.font_custom_selection  | replace: ' ', '+' }}:wght@{{settings.font_custom_weight}}&display=swap'
-    rel='stylesheet'
-  >
+  {%- assign custom_font_url = 'https://fonts.googleapis.com/css2?family=' | append: settings.font_custom_selection | replace: ' ', '+' | append: ':wght@' | append: settings.font_custom_weight | append: '&display=swap' -%}
+  <link rel="preload" as="style" href="{{ custom_font_url }}" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ custom_font_url }}"></noscript>
 {% endif %}

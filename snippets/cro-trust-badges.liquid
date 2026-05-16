@@ -1,0 +1,51 @@
+{% comment %}
+  Renders static Trust Badges strip for product pages.
+  No app needed — pure HTML/CSS, no JS cost.
+  Shows: Despacho a Chile, Pago Seguro, Garantía, Devolución.
+
+  Usage (add inside product info template):
+    {% render 'cro-trust-badges' %}
+{% endcomment %}
+
+<div class="cro-trust-badges" aria-label="Garantías de compra">
+  <div class="cro-trust-badges__item">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M5 12H3l9-9 9 9h-2M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21V12h6v9"/></svg>
+    <span>Despacho a Chile</span>
+  </div>
+  <div class="cro-trust-badges__item">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    <span>Pago 100% Seguro</span>
+  </div>
+  <div class="cro-trust-badges__item">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Garantía del Producto</span>
+  </div>
+  <div class="cro-trust-badges__item">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    <span>Devolución Fácil</span>
+  </div>
+</div>
+
+<style>
+  .cro-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(var(--color-foreground), 0.1);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+    margin: 16px 0;
+  }
+  .cro-trust-badges__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+  .cro-trust-badges__item svg {
+    flex-shrink: 0;
+    color: rgb(var(--color-button));
+  }
+</style>

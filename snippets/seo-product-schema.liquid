@@ -1,0 +1,83 @@
+{% comment %}
+  Renders enriched Product JSON-LD schema optimized for Google Chile.
+  Includes: price CLP, shipping to CL, stock, brand, images array.
+
+  Usage:
+    {% render 'seo-product-schema', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_url = shop.url | append: product.url
+  assign availability = 'https://schema.org/OutOfStock'
+  if product.available
+    assign availability = 'https://schema.org/InStock'
+  endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "@id": {{ product_url | append: "#product" | json }},
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | strip_newlines | truncatewords: 100 | json }},
+  "sku": {{ current_variant.sku | default: current_variant.id | json }},
+  "mpn": {{ current_variant.barcode | default: current_variant.sku | json }},
+  "url": {{ product_url | json }},
+  "image": [
+    {%- assign media_printed = false -%}
+    {%- for media in product.media limit: 5 -%}
+      {%- if media.media_type == 'image' -%}
+        {%- if media_printed %},{% endif -%}
+        {{ media | image_url: width: 1024 | prepend: "https:" | json }}
+        {%- assign media_printed = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | default: shop.name | json }}
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": {{ product_url | json }},
+    "priceCurrency": "CLP",
+    "price": {{ current_variant.price | divided_by: 100.0 | json }},
+    "priceValidUntil": "{{ 'now' | date: '%s' | plus: 7776000 | date: '%Y-%m-%d' }}",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": {{ availability | json }},
+    "seller": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "@id": "{{ shop.url }}/#organization"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "CL"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "businessDays": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"]
+        },
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 5,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  }
+}
+</script>

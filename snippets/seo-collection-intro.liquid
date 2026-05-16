@@ -1,0 +1,80 @@
+{% comment %}
+  Renders an SEO-optimized collection header with H1, intro text,
+  and an expandable "read more" description block.
+
+  No params needed — uses the current collection object automatically.
+
+  Usage (add at the top of collection template sections):
+    {% render 'seo-collection-intro' %}
+{% endcomment %}
+
+{%- if collection.description != blank or collection.title != blank -%}
+  <div class="seo-collection-intro" itemscope itemtype="https://schema.org/CollectionPage">
+    {%- if collection.title != blank -%}
+      <h1 class="seo-collection-intro__title" itemprop="name">
+        {{ collection.title | escape }}
+      </h1>
+    {%- endif -%}
+
+    {%- if collection.description != blank -%}
+      {%- assign desc_words = collection.description | strip_html | split: ' ' -%}
+      {%- if desc_words.size > 40 -%}
+        {%- assign short_desc = collection.description | strip_html | truncatewords: 40 -%}
+        <div class="seo-collection-intro__desc">
+          <p class="seo-collection-intro__excerpt" itemprop="description">
+            {{ short_desc }}
+            <button
+              class="seo-collection-intro__toggle"
+              aria-expanded="false"
+              onclick="this.closest('.seo-collection-intro__desc').classList.toggle('is-expanded'); this.setAttribute('aria-expanded', this.closest('.seo-collection-intro__desc').classList.contains('is-expanded'));"
+            >
+              <span class="show-more">Ver más ↓</span>
+              <span class="show-less">Ver menos ↑</span>
+            </button>
+          </p>
+          <div class="seo-collection-intro__full" itemprop="description" hidden>
+            {{ collection.description }}
+          </div>
+        </div>
+      {%- else -%}
+        <div class="seo-collection-intro__desc" itemprop="description">
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+<style>
+  .seo-collection-intro {
+    padding: 24px 0 16px;
+  }
+  .seo-collection-intro__title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .seo-collection-intro__desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(var(--color-foreground), 0.8);
+    max-width: 72ch;
+  }
+  .seo-collection-intro__toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(var(--color-button));
+    font-size: inherit;
+    padding: 0 4px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .seo-collection-intro__full { display: none; }
+  .seo-collection-intro__desc.is-expanded .seo-collection-intro__excerpt { display: none; }
+  .seo-collection-intro__desc.is-expanded .seo-collection-intro__full { display: block; }
+  .seo-collection-intro__desc.is-expanded .show-more { display: none; }
+  .seo-collection-intro__desc .show-less { display: none; }
+  .seo-collection-intro__desc.is-expanded .show-less { display: inline; }
+</style>

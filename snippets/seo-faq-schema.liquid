@@ -1,0 +1,41 @@
+{% comment %}
+  Renders FAQPage JSON-LD schema from section blocks.
+  Blocks must be of type 'faq_item' with settings: question, answer.
+
+  Usage inside a section:
+    {% render 'seo-faq-schema', faq_blocks: section.blocks %}
+{% endcomment %}
+
+{%- assign faq_rendered = false -%}
+{%- for block in faq_blocks -%}
+  {%- if block.type == 'question' and block.settings.question != blank and block.settings.answer != blank -%}
+    {%- assign faq_rendered = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if faq_rendered -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- assign first_faq = true -%}
+    {%- for block in faq_blocks -%}
+      {%- if block.type == 'question' and block.settings.question != blank and block.settings.answer != blank -%}
+        {%- unless first_faq %},{%- endunless -%}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ block.settings.answer | strip_html | json }}
+          }
+        }
+        {%- assign first_faq = false -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}

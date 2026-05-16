@@ -32,24 +32,31 @@
   if media_aspect_ratio == blank or media_aspect_ratio == 'auto'
     assign media_aspect_ratio = image.aspect_ratio
   endif
+
+  comment
+    LCP optimization: section.index == 1 is always the first visible section (hero).
+    Force eager + high priority regardless of global lazyload setting.
+  endcomment
   assign fetch_priority = 'auto'
   if section.index == 1
     assign fetch_priority = 'high'
+    assign lazyload = false
   endif
+
   assign sizes = '100vw'
   if lazyload
     assign loading = 'lazy'
     assign wc = 'xo-lazyload'
-    assign final_widths = '100'
-    assign width = 100
+    assign final_widths = '375, 550, 750, 1100, 1500'
+    assign width = 1500
   else
     assign loading = 'eager'
     assign wc = null
     assign final_widths = '375, 550, 750, 1100, 1500'
     if widths != blank
       assign final_widths = widths
-      assign width = final_widths | replace: ' ', '' | split: ',' | last
     endif
+    assign width = final_widths | replace: ' ', '' | split: ',' | last
   endif
 %}
 
