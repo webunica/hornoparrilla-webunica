@@ -1,0 +1,244 @@
+
+{%- style -%}
+  .vicca-welcome {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    text-align: center;
+  }
+  .vicca-welcome__header {
+    margin-bottom: 40px;
+  }
+  .vicca-welcome__title {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .vicca-welcome__divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+  }
+  .vicca-welcome__divider span {
+    width: 4px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 3px;
+  }
+  .vicca-welcome__divider span:nth-child(2) {
+    width: 6px;
+    height: 6px;
+    background: #888;
+  }
+  .vicca-welcome__subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+  }
+  .vicca-welcome__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (max-width: 768px) {
+    .vicca-welcome__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .vicca-welcome__box {
+    padding: 40px 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+  }
+  .vicca-welcome__box-icon {
+    margin-bottom: 20px;
+    color: #888;
+  }
+  .vicca-welcome__box-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+  .vicca-welcome__box-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  .vicca-welcome__box-desc {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.4;
+  }
+{%- endstyle -%}
+
+<section class="vicca-welcome {% render 'section-attr' %}" id="section-{{ section.id }}">
+  {% render 'section-bg-image' %}
+  <xo-container {% render 'section-layout' %}>
+    <div class="vicca-welcome__header">
+      <xo-animate xo-cascade>
+        <h2 class="vicca-welcome__title">{{ section.settings.title }}</h2>
+      </xo-animate>
+      <div class="vicca-welcome__divider">
+        <span></span><span></span><span></span>
+      </div>
+      <xo-animate xo-cascade>
+        <p class="vicca-welcome__subtitle">{{ section.settings.subtitle }}</p>
+      </xo-animate>
+    </div>
+
+    <div class="vicca-welcome__grid">
+      {%- for block in section.blocks -%}
+        <div class="vicca-welcome__box" style="background-color: {{ block.settings.bg_color }};" {{ block.shopify_attributes }}>
+          <xo-animate xo-cascade>
+            <div class="vicca-welcome__box-icon">
+              {%- if block.settings.icon_svg != blank -%}
+                {{ block.settings.icon_svg }}
+              {%- elsif block.settings.icon_image != blank -%}
+                {% render 'image', image: block.settings.icon_image, width: 40 %}
+              {%- else -%}
+                {% render 'icon', name: block.settings.icon_name, icon_size: 40 %}
+              {%- endif -%}
+            </div>
+            <h3 class="vicca-welcome__box-title">{{ block.settings.title }}</h3>
+            <p class="vicca-welcome__box-desc">{{ block.settings.description }}</p>
+          </xo-animate>
+        </div>
+      {%- endfor -%}
+    </div>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "Vicca Welcome",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "BIENVENIDO A VICCA"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Hacemos el Diseño Accesible Para Todos"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Box",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#f9f9f9"
+        },
+        {
+          "type": "text",
+          "id": "icon_name",
+          "label": "Icon Name (from theme)",
+          "default": "star",
+          "info": "Example: star, location, truck, check"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG (Optional)",
+          "info": "Paste SVG code here to override theme icon."
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image (Optional)",
+          "info": "Upload an image to override icons."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vicca Welcome",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "GARANTÍA",
+            "description": "90 Días",
+            "icon_name": "check",
+            "bg_color": "#f7fcfb"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "ENVÍO DENTRO DE RM",
+            "description": "Otras regiones enviar cotización",
+            "icon_name": "location",
+            "bg_color": "#e2ede6"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "BOLETA Y/O FACTURA",
+            "description": "Envía tus datos",
+            "icon_name": "star",
+            "bg_color": "#f7fcfb"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
